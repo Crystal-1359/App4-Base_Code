@@ -37,29 +37,22 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
   
   <script>
     
-          // Variables
-          var allergy_count = 0;
-          var cold_count = 0;
-  
-          // Increment allergy_count
-          function allergyAdd(){
-              allergy_count = allergy_count + 1;
-          }
-  
-          // Increment cold_count
-          function coldAdd(){
-              cold_count = cold_count + 1;
-          }
+    // Variables
+    var correct_answers = 0;
     
-          // Display resutls and remove button on results page
-          function results() {
-            var resultText = document.getElementById("Results");
-            var allergyPercent = allergy_count / 4.0 * 100
-            var coldPercent = cold_count / 4.0 * 100
-            resultText.innerHTML = "Probability it is allergies = " + allergyPercent + "%<br> Probability it is a cold = " + coldPercent + "%";
-            var resultsButton = document.getElementById("ResultsButton");
-            resultsButton.remove()
-          }
+    // Increment correct_answers
+    function correctAdd() {
+      correct_answers = correct_answers + 1;
+    }
+    
+    // Display resutls and remove button on results page
+    function results() {
+      var resultText = document.getElementById("Results");
+      var grade = correct_answers / 6.0 * 100;
+      resultText.innerHTML = "You scored a " + grade.toFixed(2) + "%";
+      var resultsButton = document.getElementById("ResultsButton");
+      resultsButton.remove()
+    }
   
   </script>
   
@@ -84,22 +77,25 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
       left: 0vw;
       z-index: 1;
   }
+    img, object {
+      max-height : 90%;
+      max-width : 90%;
+    }
   </style>
   
     
   
-  <body>
+  <body width = "device-width">
     
     <!-- Intro Page -->
     <div id="header" class="w3-container w3-flat-carrot">
-    	<h1>Cold or Allergies?</h1>
+    	<h1>Do you know chemistry?</h1>
     </div>
     	
     <div id="content" class="w3-container">
-    	<p>Are you feeling like you might have a cold but wonder if it is allergies. Answer a few short questions to find out!</p>
+    	<p>Do you think that you understand chem? Answer a few short questions to find out!</p>
     	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
-    	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
-    	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+    	<img class = "test" src = "data:image/jpeg;base64,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" alt = "bruh moment">
     </div>
   
     
@@ -110,9 +106,9 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     	</div>
     	
       <div id="content" class="w3-container">
-        <p>Are your eyes watery or itchy?</p>
-        <a href = "#two" onclick = "allergyAdd();" class="w3-btn w3-black w3-round"> Yes </a>
-        <a href = "#two" onclick = "coldAdd();" class="w3-btn w3-black w3-round"> No </a>
+        <p>Is HCL a strong acid?</p>
+        <a href = "#two" onclick = "correctAdd();" class="w3-btn w3-black w3-round"> Yes </a>
+        <a href = "#two" class="w3-btn w3-black w3-round"> No </a>
       </div>
     </div>
     
@@ -125,9 +121,9 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     	</div>
     	
     	<div id="content" class="w3-container">
-    		<p>Do you have a fever?</p>
-        <a href = "#three" onclick = "coldAdd();" class="w3-btn w3-black w3-round"> Yes </a>
-        <a href = "#three" onclick = "allergyAdd();" class="w3-btn w3-black w3-round"> No </a> 
+    		<p>Is boiling water an exothermic reaction?</p>
+        <a href = "#three" class="w3-btn w3-black w3-round"> Yes </a>
+        <a href = "#three" onclick = "correctAdd();" class="w3-btn w3-black w3-round"> No </a> 
     	</div>
     </div>
       
@@ -140,9 +136,9 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     	</div>
     	
     	<div id="content" class="w3-container">
-    		<p>Do you have a sore throat?</p>
+    		<p>Are the electrons found in the center of an atom?</p>
         <a href = "#four" onclick = "coldAdd();" class="w3-btn w3-black w3-round"> Yes </a>
-        <a href = "#four" onclick = "allergyAdd();" class="w3-btn w3-black w3-round"> No </a>  
+        <a href = "#four" onclick = "correctAdd();" class="w3-btn w3-black w3-round"> No </a>  
     	</div>
     </div>
       
@@ -155,9 +151,37 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     	</div>
     	
     	<div id="content" class="w3-container">
-    		<p>Are your symptoms seasonal or chronic?</p>
-        <a href = "#results" onclick = "allergyAdd();" class="w3-btn w3-black w3-round"> Yes </a>
-        <a href = "#results" onclick = "coldAdd();" class="w3-btn w3-black w3-round"> No </a>   
+    		<p>Is magnesium an alkaline earth metal?</p>
+        <a href = "#five" onclick = "correctAdd();" class="w3-btn w3-black w3-round"> Yes </a>
+        <a href = "#five" class="w3-btn w3-black w3-round"> No </a>   
+    	</div>
+    </div>	
+    
+    
+    <!-- Fifth Page -->
+    <div class="page" id="five">
+    	<div id="header" class="w3-container w3-flat-carrot">
+    		<h1>Question 4</h1>
+    	</div>
+    	
+    	<div id="content" class="w3-container">
+    		<p>Is potasium a transition metal?</p>
+        <a href = "#six" class="w3-btn w3-black w3-round"> Yes </a>
+        <a href = "#six" onclick = "correctAdd();" class="w3-btn w3-black w3-round"> No </a>   
+    	</div>
+    </div>	
+    
+    
+    <!-- Sixth Page -->
+    <div class="page" id="six">
+    	<div id="header" class="w3-container w3-flat-carrot">
+    		<h1>Question 4</h1>
+    	</div>
+    	
+    	<div id="content" class="w3-container">
+    		<p>Does water have a high heat capacity?</p>
+        <a href = "#results" onclick = "correctAdd();" class="w3-btn w3-black w3-round"> Yes </a>
+        <a href = "#results" class="w3-btn w3-black w3-round"> No </a>   
     	</div>
     </div>	
       
